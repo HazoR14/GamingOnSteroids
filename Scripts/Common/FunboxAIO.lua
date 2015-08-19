@@ -81,7 +81,7 @@ if GetObjectName(GetMyHero()) == "Rengar" then
       if GetCurrentMana(myHero) <= 4 then
         if ts ~=nil then
           if GotBuff(myHero, "rengarpassivebuff") == 1 then
-            if CanUseSpell(myHero, _Q) == 0 and ValidTarget(ts, 900) then
+            if CanUseSpell(myHero, _Q) == 0 and ValidTarget(ts, 750) then
               CastSpell(_Q)
             end
           end
@@ -110,10 +110,8 @@ if GetObjectName(GetMyHero()) == "Rengar" then
       if GetCurrentMana(myHero) == 5 then
         if (GetCurrentHP(myHero)/GetMaxHP(myHero))*100 > 40 then
           if tc ~=nil then
-            if GetDistance(tc, myHero) < 300 then
-              if ValidTarget(tc, 250) then
-                CastSpell(_Q)
-              end
+            if ValidTarget(tc, 250) then
+              CastSpell(_Q)
             end
           end
           if ts ~=nil then
@@ -123,7 +121,7 @@ if GetObjectName(GetMyHero()) == "Rengar" then
               end
             end
             if GotBuff(myHero, "rengarpassivebuff") == 1 then
-              if ValidTarget(ts, 800) then
+              if ValidTarget(ts, 750) then
                 CastSpell(_Q)
               end
             end
