@@ -75,7 +75,7 @@ if GetObjectName(GetMyHero()) == "Rengar" then
         if GotBuff(ts, "rengareslow") == 1 or GotBuff(ts, "RengarEFinalMAX") == 1 then
           DelayAction(function()
             AttackUnit(taa)
-          end, 500)
+          end, 300)
         end
       end
       if GetCurrentMana(myHero) <= 4 then
