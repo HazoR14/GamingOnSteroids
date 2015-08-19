@@ -117,8 +117,8 @@ if GetObjectName(GetMyHero()) == "Rengar" then
             end
           end
           if ts ~=nil then
-            if GetDistance(ts, myHero) >= 300 then
-              if ValidTarget(ts, 1000) and pef.HitChance == 1 then
+            if GotBuff(myHero, "rengarpassivebuff") == 0 then
+              if ValidTarget(ts, 1000) and GetDistance(ts, myHero) >= 300 and pef.HitChance == 1 then
                 CastSkillShot(_E, pef.PredPos.x, pef.PredPos.y, pef.PredPos.z)
               end
             end
