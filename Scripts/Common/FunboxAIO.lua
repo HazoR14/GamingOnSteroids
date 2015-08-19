@@ -1,7 +1,7 @@
 --
 --
 --   F U N B O X    A  I  O
---        1 . 0  . 2
+--        1 . 0  . 3
 --
 -- L E B L A N C
 if GetObjectName(GetMyHero()) == "Leblanc" then
@@ -44,7 +44,16 @@ if GetObjectName(GetMyHero()) == "Lucian" then
         AttackUnit(t)
       end
       if CanUseSpell(myHero, _Q) == 0 then
-        CastTargetSpell(t, _Q)
+        if CanUseSpell(myHero, _E) == 5 then
+          DelayAction(function()
+            if GotBuff(myHero, "lucianpassivebuff") == 0 then
+              CastTargetSpell(t, _Q)
+            end
+          end, 500)
+        end
+        if CanUseSpell(myHero, _E) == 2 or CanUseSpell(myHero, _E) == 0 then
+          CastTargetSpell(t, _Q)
+        end
       elseif CanUseSpell(myHero, _W) == 0 then
         DelayAction(function()
           if GotBuff(myHero, "lucianpassivebuff") == 0 and pw.HitChance == 1 then
