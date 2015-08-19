@@ -1,7 +1,7 @@
 --
 --
 --   F U N B O X    A  I  O
---        1 . 0  . 3
+--        1 . 0 . 4
 --
 -- L E B L A N C
 if GetObjectName(GetMyHero()) == "Leblanc" then
@@ -89,13 +89,8 @@ if GetObjectName(GetMyHero()) == "Rengar" then
       end
       if GetCurrentMana(myHero) <= 4 then
         if ts ~=nil then
-          if GotBuff(myHero, "rengarpassivebuff") == 1 then
-            if CanUseSpell(myHero, _Q) == 0 and ValidTarget(ts, 750) then
-              CastSpell(_Q)
-            end
-          end
           if GotBuff(myHero, "rengarpassivebuff") == 0 then
-            if CanUseSpell(myHero, _E) == 0 and ValidTarget(ts, 1000) and pef.HitChance == 1 then
+            if CanUseSpell(myHero, _E) == 0 and ValidTarget(ts, 1000) and GetDistance(ts, myHero) > 350 and pef.HitChance == 1 then
               CastSkillShot(_E, pef.PredPos.x, pef.PredPos.y, pef.PredPos.z)
             end
           end
@@ -105,14 +100,17 @@ if GetObjectName(GetMyHero()) == "Rengar" then
             if ValidTarget(tc, 250) then
               CastSpell(_Q)
             end
-          elseif CanUseSpell(myHero, _W) == 0 then
+          end
+          if CanUseSpell(myHero, _W) == 0 then
             if ValidTarget(tc, 350) then
               CastSpell(_W)
             end
           elseif CanUseSpell(myHero, _E) == 0 then
-            if ValidTarget(tc, 350) and pet.HitChance == 1 then
-              CastSkillShot(_E, pet.PredPos.x, pet.PredPos.y, pet.PredPos.z)
-            end
+            DelayAction(function()
+              if ValidTarget(tc, 350) and pet.HitChance == 1 then
+                CastSkillShot(_E, pet.PredPos.x, pet.PredPos.y, pet.PredPos.z)
+              end
+            end, 500)
           end
         end
       end
@@ -127,11 +125,6 @@ if GetObjectName(GetMyHero()) == "Rengar" then
             if GotBuff(myHero, "rengarpassivebuff") == 0 then
               if ValidTarget(ts, 1000) and GetDistance(ts, myHero) >= 300 and pef.HitChance == 1 then
                 CastSkillShot(_E, pef.PredPos.x, pef.PredPos.y, pef.PredPos.z)
-              end
-            end
-            if GotBuff(myHero, "rengarpassivebuff") == 1 then
-              if ValidTarget(ts, 750) then
-                CastSpell(_Q)
               end
             end
           end
