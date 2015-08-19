@@ -79,43 +79,53 @@ if GetObjectName(GetMyHero()) == "Rengar" then
         end
       end
       if GetCurrentMana(myHero) <= 4 then
-        if ts ~=nil and ValidTarget(ts, 900) and CanUseSpell(myHero, _Q) == 0 and GotBuff(myHero, "rengarpassivebuff") == 1 then
-          CastSpell(_Q)
-        end
-        if CanUseSpell(myHero, _Q) == 0 then
-          if tc ~=nil and ValidTarget(tc, 250) then
-            CastSpell(_Q)
-          end
-        elseif CanUseSpell(myHero, _W) == 0 then
-          if tc ~=nil and ValidTarget(tc, 350) then
-            CastSpell(_W)
-          end
-        elseif CanUseSpell(myHero, _E) == 0 then
-          if tc ~=nil and ValidTarget(tc, 350) and pet.HitChance == 1 then
-            CastSkillShot(_E, pet.PredPos.x, pet.PredPos.y, pet.PredPos.z)
+        if ts ~=nil then
+          if GotBuff(myHero, "rengarpassivebuff") == 1 then
+            if CanUseSpell(myHero, _Q) == 0 and ValidTarget(ts, 900) then
+              CastSpell(_Q)
+            end
           end
           if GotBuff(myHero, "rengarpassivebuff") == 0 then
-            if ts ~=nil and ValidTarget(ts, 1000) and pef.HitChance == 1 then
+            if CanUseSpell(myHero, _E) == 0 and ValidTarget(ts, 1000) and pef.HitChance == 1 then
               CastSkillShot(_E, pef.PredPos.x, pef.PredPos.y, pef.PredPos.z)
+            end
+          end
+        end
+        if tc ~=nil then
+          if CanUseSpell(myHero, _Q) == 0 then
+            if ValidTarget(tc, 250) then
+              CastSpell(_Q)
+            end
+          elseif CanUseSpell(myHero, _W) == 0 then
+            if ValidTarget(tc, 350) then
+              CastSpell(_W)
+            end
+          elseif CanUseSpell(myHero, _E) == 0 then
+            if ValidTarget(tc, 350) and pet.HitChance == 1 then
+              CastSkillShot(_E, pet.PredPos.x, pet.PredPos.y, pet.PredPos.z)
             end
           end
         end
       end
       if GetCurrentMana(myHero) == 5 then
         if (GetCurrentHP(myHero)/GetMaxHP(myHero))*100 > 40 then
-          if tc ~=nil and GetDistance(tc, myHero) < 300 then
-            if ValidTarget(tc, 250) then
-              CastSpell(_Q)
+          if tc ~=nil then
+            if GetDistance(tc, myHero) < 300 then
+              if ValidTarget(tc, 250) then
+                CastSpell(_Q)
+              end
             end
           end
-          if ts ~=nil and GetDistance(ts, myHero) >= 300 then
-            if ValidTarget(ts, 1000) and pef.HitChance == 1 then
-              CastSkillShot(_E, pef.PredPos.x, pef.PredPos.y, pef.PredPos.z)
+          if ts ~=nil then
+            if GetDistance(ts, myHero) >= 300 then
+              if ValidTarget(ts, 1000) and pef.HitChance == 1 then
+                CastSkillShot(_E, pef.PredPos.x, pef.PredPos.y, pef.PredPos.z)
+              end
             end
-          end
-          if GotBuff(myHero, "rengarpassivebuff") == 1 then
-            if ts ~=nil and ValidTarget(ts, 800) then
-              CastSpell(_Q)
+            if GotBuff(myHero, "rengarpassivebuff") == 1 then
+              if ValidTarget(ts, 800) then
+                CastSpell(_Q)
+              end
             end
           end
         end
