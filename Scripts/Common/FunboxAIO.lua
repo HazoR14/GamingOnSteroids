@@ -1,7 +1,7 @@
 --
 --
 --   F U N B O X    A  I  O
---        1 . 0  . 1
+--        1 . 0  . 2
 --
 -- L E B L A N C
 if GetObjectName(GetMyHero()) == "Leblanc" then
