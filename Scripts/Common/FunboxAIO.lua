@@ -62,8 +62,8 @@ if GetObjectName(GetMyHero()) == "Rengar" then
     local ts = GetTarget(1000)
     local tc = GetTarget(350)
     local taa = GetTarget(240)
-    local pef = GetPredictionForPlayer(GetOrigin(GetMyHero()), ts, GetMoveSpeed(ts), 1600, 250, 1000, 60, true, true)
-    local pet = GetPredictionForPlayer(GetOrigin(GetMyHero()), tc, GetMoveSpeed(tc), 1600, 250, 350, 60, true, true)
+    local pef = GetPredictionForPlayer(GetOrigin(GetMyHero()), ts, GetMoveSpeed(ts), 1600, 250, 1000, 90, true, true)
+    local pet = GetPredictionForPlayer(GetOrigin(GetMyHero()), tc, GetMoveSpeed(tc), 1600, 250, 350, 90, true, true)
     if (GetCurrentHP(myHero)/GetMaxHP(myHero))*100 <= 40 and GetCurrentMana(myHero) == 5 then
       CastSpell(_W)
     end
